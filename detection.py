@@ -22,6 +22,7 @@ class PromptOWLViT(object):
         image = self.read_image(os.path.join(self.module_dir, "detection-images", self.image_name), 
                                 size=size)
         predictions = self.detector(image, labels)
+        print("Number of boxes:", len(predictions))
         if save:
             self.plot_bboxes_on_image(image, predictions)
         return predictions
