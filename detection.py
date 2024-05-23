@@ -15,7 +15,7 @@ class PromptOWLViT(object):
         self.module_dir = os.path.dirname(__file__)
         self.image_name = image_name
         self.detector = pipeline(model=checkpoint_name, task=task)
-        self.sam = SAM("mobile_sam.pt")
+        #self.sam = SAM("mobile_sam.pt")
     
     def detect(self, labels, size=(1024, 1024), save=False):
         """Detects bounding boxes for given image path and text labels"""
@@ -48,6 +48,7 @@ class PromptOWLViT(object):
                                  "detected-images", 
                                  os.path.splitext(self.image_name)[0] + "_boxes_on_image.png")
         image.save(fpath)
+        return image
 
     def read_image(self, image_path, size=None):
         """Reads image as Image object"""
