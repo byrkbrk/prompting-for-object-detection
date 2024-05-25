@@ -16,6 +16,7 @@ class PromptOWLViT(object):
         self.image_name = image_name
         self.detector = pipeline(model=checkpoint_name, task=task)
         #self.sam = SAM("mobile_sam.pt")
+        self.create_dirs(self.module_dir)
     
     def detect(self, labels, size=(1024, 1024), save=False):
         """Detects bounding boxes for given image path and text labels"""
