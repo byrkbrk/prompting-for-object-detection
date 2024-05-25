@@ -27,9 +27,12 @@ options:
                         Size (height, width) to which the image be transformed
 ~~~
 
+### Example usage
 ~~~
 python3 detect.py dogs.jpg "jacket" "small nose" --image_size 1024 1024
 ~~~
+
+The output image with bounding boxes (see below, on the right) will be saved into `detected-images` folder.
 
 <p align="center">
   <img src="files-for-readme/dogs.png" width="45%" />
