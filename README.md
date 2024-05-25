@@ -9,17 +9,17 @@
 Check it out how to use:
 
 ~~~
-python3 detecy.py -h
+python3 detect.py -h
 ~~~
 
 Output:
 
 ~~~
-Detects bounding boxes for given image and text prompt
+Detects bounding boxes for given image and text prompts
 
 positional arguments:
   image_name            Name of the image file that be processed. Note image file must be in 'segmentation-images' directory
-  text_prompt           Text prompt for the model
+  text_prompts          Text prompts for the model
 
 options:
   -h, --help            show this help message and exit
