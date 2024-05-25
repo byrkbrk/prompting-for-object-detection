@@ -65,6 +65,12 @@ class PromptOWLViT(object):
             transforms.ToPILImage()
             ])(image)
     
+    def create_dirs(self, root):
+        """Creates directories required for detection"""
+        dir_names = ["detection-images", "detected-images"]
+        for dir_name in dir_names:
+            os.makedirs(os.path.join(root, dir_name), exist_ok=True)
+    
 
 
 if __name__ == "__main__":
