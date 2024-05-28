@@ -42,13 +42,15 @@ Output:
 Detects bounding boxes for given image and text prompts
 
 positional arguments:
-  image_name            Name of the image file that be processed. Note image file must be in 'segmentation-images' directory
+  image_name            Name of the image file that be processed. Note image
+                        file must be in 'segmentation-images' directory
   text_prompts          Text prompts for the model
 
 options:
   -h, --help            show this help message and exit
   --image_size IMAGE_SIZE [IMAGE_SIZE ...]
                         Size (height, width) to which the image be transformed
+  --device DEVICE       Device that be used during inference
 ~~~
 
 ### Example usage
