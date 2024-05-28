@@ -2,6 +2,8 @@
 
 ## Introduction
 
+We implement a simple module that detects the objects in an image via text prompts. In our module, we use pretrained [OWLv2](https://arxiv.org/abs/2306.09683) provided by [HuggingFace](https://huggingface.co/docs/transformers/en/tasks/zero_shot_object_detection). 
+
 ## Setting Up the Environment
 
 1. Install [Conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html), if not already installed.
