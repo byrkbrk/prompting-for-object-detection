@@ -11,10 +11,12 @@ class PromptOWLViT(object):
     def __init__(self, 
                  image_name,
                  checkpoint_name="google/owlv2-base-patch16-ensemble",
-                 task="zero-shot-object-detection"):
+                 task="zero-shot-object-detection",
+                 device=None):
         self.module_dir = os.path.dirname(__file__)
         self.image_name = image_name
-        self.detector = pipeline(model=checkpoint_name, task=task)
+        self.device = self.initialize_device(device)
+        self.detector = pipeline(model=checkpoint_name, task=task, device=self.device)
         #self.sam = SAM("mobile_sam.pt")
         self.create_dirs(self.module_dir)
     
@@ -72,6 +74,16 @@ class PromptOWLViT(object):
         for dir_name in dir_names:
             os.makedirs(os.path.join(root, dir_name), exist_ok=True)
     
+    def initialize_device(self, device):
+        """Initializes device based on availability"""
+        if device is None:
+            if torch.cuda.is_available():
+                device = "cuda"
+            elif torch.backends.mps.is_available():
+                device = "mps"
+            else:
+                device = "cpu"
+        return torch.device(device)
 
 
 if __name__ == "__main__":
