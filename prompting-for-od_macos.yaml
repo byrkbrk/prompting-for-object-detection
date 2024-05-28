@@ -1,0 +1,12 @@
+name: prompting-for-od
+
+channels:
+  - pytorch
+  - defaults
+  - conda-forge
+
+dependencies:
+  - python=3.11
+  - pytorch
+  - transformers
+  - torchvision
