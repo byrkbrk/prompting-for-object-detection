@@ -3,7 +3,6 @@ import torch
 from torchvision import transforms
 from PIL import Image, ImageDraw
 from transformers import pipeline
-from ultralytics import SAM
 
 
 
@@ -17,7 +16,6 @@ class PromptOWLViT(object):
         self.image_name = image_name
         self.device = self.initialize_device(device)
         self.detector = pipeline(model=checkpoint_name, task=task, device=self.device)
-        #self.sam = SAM("mobile_sam.pt")
         self.create_dirs(self.module_dir)
     
     def detect(self, labels, size=(1024, 1024), save=False):
@@ -29,13 +27,6 @@ class PromptOWLViT(object):
         if save:
             self.plot_bboxes_on_image(image, predictions)
         return predictions
-    
-    def segment(self, image_path, text_labels):
-        predictions = self.detect(image_path, text_labels, True)
-        box = list(predictions[0]["box"].values())
-        p = self.sam(self.resize_image(self.read_image(image_path)), bboxes=box, labels=[1])
-        print(p)
-
     
     def plot_bboxes_on_image(self, image, predictions, fpath=None):
         """Plots bboxes onto image and saves"""
