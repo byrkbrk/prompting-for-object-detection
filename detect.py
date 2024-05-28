@@ -11,10 +11,11 @@ def parse_arguments():
     parser.add_argument("text_prompts", nargs="+", type=str, default=None, help="Text prompts for the model")
     parser.add_argument("--image_size", nargs="+", type=int, default=[1024, 1024],
                         help="Size (height, width) to which the image be transformed")
+    parser.add_argument("--device", type=str, default="cpu", help="Device that be used during inference")
     return parser.parse_args()    
 
 
 if __name__ == "__main__":
     args = parse_arguments()
     print("Provided text prompts:", args.text_prompts)
-    PromptOWLViT(args.image_name).detect(args.text_prompts, args.image_size, save=True)
+    PromptOWLViT(args.image_name, device=args.device).detect(args.text_prompts, args.image_size, save=True)
