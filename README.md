@@ -4,6 +4,28 @@
 
 ## Setting Up the Environment
 
+1. Install [Conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html), if not already installed.
+2. Clone the repository
+    ~~~
+    git clone https://github.com/byrkbrk/prompting-for-object-detection.git
+    ~~~
+3. Change the directory:
+    ~~~
+    cd prompting-for-object-detection
+    ~~~
+4. For macos, run:
+    ~~~
+    conda env create -f prompting-for-od_macos.yaml
+    ~~~
+    For linux or windows, run:
+    ~~~
+    conda env create -f prompting-for-od_linux.yaml
+    ~~~
+5. Activate the environment:
+    ~~~
+    conda activate prompting-for-od
+    ~~~
+
 ## Prompts
 
 Check it out how to use:
