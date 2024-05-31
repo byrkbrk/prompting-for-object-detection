@@ -22,26 +22,26 @@ class PromptOWLViT(object):
         """Detects bounding boxes for given image path and text labels"""
         image = self.read_image(os.path.join(self.module_dir, "detection-images", self.image_name), 
                                 size=size)
-        predictions = self.detector(image, labels)
+        predictions = self.get_predictions(image, labels)
         print("Number of boxes:", len(predictions))
-        if save:
-            self.plot_bboxes_on_image(image, predictions)
+        self.plot_bboxes_on_image(image, predictions, save=save)
         return predictions
     
-    def plot_bboxes_on_image(self, image, predictions, fpath=None):
+    def plot_bboxes_on_image(self, image, predictions, fpath=None, save=False):
         """Plots bboxes onto image and saves"""
         draw = ImageDraw.Draw(image)
         for prediction in predictions:
-            draw.rectangle(list(prediction["box"].values()), outline="red", width=1)
+            draw.rectangle(list(prediction["box"].values()), outline="red", width=2)
             draw.text((prediction["box"]["xmin"], prediction["box"]["ymin"]),
                       f"{prediction['label']}: {round(prediction['score'], 2)}",
                       fill="purple")
         
-        if fpath is None:
-            fpath = os.path.join(self.module_dir, 
-                                 "detected-images", 
-                                 os.path.splitext(self.image_name)[0] + "_boxes_on_image.png")
-        image.save(fpath)
+        if save:
+            if fpath is None:
+                fpath = os.path.join(self.module_dir, 
+                                    "detected-images", 
+                                    os.path.splitext(self.image_name)[0] + "_boxes_on_image.png")
+            image.save(fpath)
         return image
 
     def read_image(self, image_path, size=None):
@@ -53,11 +53,7 @@ class PromptOWLViT(object):
     
     def resize_image(self, image, size):
         """Resizes given image into specified size"""
-        return transforms.Compose([
-            transforms.ToTensor(), 
-            transforms.Resize(size), 
-            transforms.ToPILImage()
-            ])(image)
+        return transforms.Compose([transforms.ToTensor(), transforms.Resize(size), transforms.ToPILImage()])(image)
     
     def create_dirs(self, root):
         """Creates directories required for detection"""
@@ -75,6 +71,11 @@ class PromptOWLViT(object):
             else:
                 device = "cpu"
         return torch.device(device)
+    
+    def get_predictions(self, image, labels):
+        """Returns predictions of the model for given image and labels"""
+        print(labels)
+        return self.detector(image, labels)
 
 
 if __name__ == "__main__":
