@@ -74,7 +74,6 @@ class PromptOWLViT(object):
     
     def get_predictions(self, image, labels):
         """Returns predictions of the model for given image and labels"""
-        print(labels)
         return self.detector(image, labels)
 
 
