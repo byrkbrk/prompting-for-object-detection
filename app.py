@@ -13,7 +13,7 @@ def detect_objects(image, text_prompt, prompt_owlvit):
 
 
 if __name__ == "__main__":
-    prompt_owlvit = PromptOWLViT(image_name=None, device="cpu")
+    prompt_owlvit = PromptOWLViT(image_name=None)
     gr_interface = gr.Interface(
         fn=lambda image, prompt, z=prompt_owlvit: detect_objects(image, prompt, z),
         inputs=[gr.Image(type="pil"), gr.Textbox(lines=4, placeholder="jacket\nsmall nose\netc")],
