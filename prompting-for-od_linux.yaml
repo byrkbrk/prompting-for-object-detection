@@ -12,3 +12,4 @@ dependencies:
   - torchvision
   - cudatoolkit=12.1
   - gradio
+  - scipy
