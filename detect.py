@@ -11,7 +11,7 @@ def parse_arguments():
     parser.add_argument("text_prompts", nargs="+", type=str, default=None, help="Text prompts for the model")
     parser.add_argument("--image_size", nargs="+", type=int, default=[1024, 1024],
                         help="Size (height, width) to which the image be transformed")
-    parser.add_argument("--device", type=str, default="cpu", help="Device that be used during inference")
+    parser.add_argument("--device", type=str, default=None, help="Device that be used during inference")
     return parser.parse_args()    
 
 
