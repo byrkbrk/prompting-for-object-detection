@@ -64,3 +64,16 @@ The output image with bounding boxes (see below, on the right) will be saved int
   <img src="files-for-readme/dogs.png" width="45%" />
   <img src="files-for-readme/dogs_boxes_on_image.png" width="45%" />
 </p>
+
+## Detecting via Gradio
+
+To run the gradio app on your local computer, execute
+
+~~~
+python3 app.py
+~~~
+Then, visit the url [http://127.0.0.1:7860](http://127.0.0.1:7860) to open the interface seen below.
+
+<p align="left">
+  <img src="files-for-readme/gradio_app_ss.png" width="75%" />
+</p>
