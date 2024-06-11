@@ -1,6 +1,5 @@
 import os
 import torch
-from torchvision import transforms
 from PIL import Image, ImageDraw
 from transformers import pipeline
 
@@ -22,6 +21,7 @@ class PromptOWLViT(object):
         """Detects bounding boxes for given image path and text labels"""
         image = self.read_image(os.path.join(self.module_dir, "detection-images", self.image_name), 
                                 size=size)
+        print(f"image size (width, height): {image.size}")
         predictions = self.get_predictions(image, labels)
         print("Number of boxes:", len(predictions))
         self.plot_bboxes_on_image(image, predictions, save=save)
@@ -53,7 +53,7 @@ class PromptOWLViT(object):
     
     def resize_image(self, image, size):
         """Resizes given image into specified size"""
-        return transforms.Compose([transforms.ToTensor(), transforms.Resize(size), transforms.ToPILImage()])(image)
+        return image.resize(size)
     
     def create_dirs(self, root):
         """Creates directories required for detection"""
