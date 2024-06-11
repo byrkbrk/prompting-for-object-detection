@@ -9,6 +9,5 @@ dependencies:
   - python=3.11
   - pytorch
   - transformers
-  - torchvision
   - gradio
   - scipy
