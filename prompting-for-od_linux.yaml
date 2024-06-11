@@ -2,14 +2,13 @@ name: prompting-for-od
 
 channels:
   - pytorch
-  - defaults
   - conda-forge
+  - defaults
 
 dependencies:
   - python=3.11
   - pytorch
   - transformers
-  - torchvision
   - cudatoolkit=12.1
   - gradio
   - scipy

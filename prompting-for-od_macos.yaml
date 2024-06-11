@@ -2,8 +2,8 @@ name: prompting-for-od
 
 channels:
   - pytorch
-  - defaults
   - conda-forge
+  - defaults
 
 dependencies:
   - python=3.11
